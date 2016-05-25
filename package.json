@@ -1,0 +1,24 @@
+{
+  "name": "trip_backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon lib/index.js --exec babel-node",
+    "build": "babel ./lib -d ./dist",
+    "serve": "node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "nodemon": "^1.9.2"
+  },
+  "dependencies": {
+    "hapi": "^13.4.1",
+    "inert": "^4.0.0",
+    "mongoose": "^4.4.19"
+  }
+}
