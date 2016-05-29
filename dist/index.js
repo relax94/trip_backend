@@ -8,40 +8,34 @@ var _inert = require("inert");
 
 var _inert2 = _interopRequireDefault(_inert);
 
-var _Store = require("./db/Store.js");
+var _TripRoutes = require("./routes/TripRoutes");
 
-var _Store2 = _interopRequireDefault(_Store);
+var _FileRoutes = require("./routes/FileRoutes");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var server = new _hapi2.default.Server();
 
-console.log(_Store2.default);
-
-var store = new _Store2.default();
-console.log(store.getTime());
-
 server.connection({
     port: 4343
 });
-server.register(_inert2.default, function () {});
+server.register(_inert2.default, function (err) {
 
-server.route({
-    method: 'GET',
-    path: '/status',
-    handler: function handler(req, reply) {
-        return reply("Working all platform");
-    }
-});
+    if (err) throw err;
 
-// Start the server
-server.start(function (err) {
+    server.route(_TripRoutes.MainPage);
+    server.route(_TripRoutes.StatusRoute);
+    server.route(_TripRoutes.GetTripRoute);
+    server.route(_TripRoutes.SaveTripRoute);
+    server.route(_FileRoutes.UploadImageSnapshotRoute);
+    server.route(_FileRoutes.GetFileRoute);
 
-    if (err) {
-        throw err;
-    }
-    console.log('Server running at:', server.info.uri);
+    // Start the server
+    server.start(function (err) {
 
-    var store1 = new _Store2.default();
-    console.log(store1.getTime());
+        if (err) {
+            throw err;
+        }
+        console.log('Server running at:', server.info.uri);
+    });
 });

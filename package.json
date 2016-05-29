@@ -2,7 +2,7 @@
   "name": "trip_backend",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "nodemon lib/index.js --exec babel-node",
     "build": "babel ./lib -d ./dist",

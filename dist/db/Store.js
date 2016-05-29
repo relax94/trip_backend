@@ -47,9 +47,22 @@ var Store = exports.Store = function () {
     }, {
         key: "saveInstance",
         value: function saveInstance(instanceToSave, fn) {
+            var _this = this;
+
             if (instanceToSave && fn) {
                 instanceToSave.save(function (err, response) {
-                    return responseWrapper(err, response, fn);
+                    return _this.responseWrapper(err, response, fn);
+                });
+            }
+        }
+    }, {
+        key: "findInstance",
+        value: function findInstance(_model, findCriteria, fn) {
+            var _this2 = this;
+
+            if (findCriteria && fn) {
+                return _model.findOne(findCriteria).exec(function (err, response) {
+                    return _this2.responseWrapper(err, response, fn);
                 });
             }
         }
