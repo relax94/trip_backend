@@ -21,6 +21,7 @@
     "inert": "^4.0.0",
     "mongoose": "^4.4.19",
     "multiparty": "^4.1.2",
-    "neo4j": "^2.0.0-RC2"
+    "neo4j": "^2.0.0-RC2",
+    "socket.io": "^1.4.6"
   }
 }
