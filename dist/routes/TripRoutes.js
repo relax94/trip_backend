@@ -22,6 +22,7 @@ var SaveTripRoute = exports.SaveTripRoute = {
     path: '/trip/save',
     handler: function handler(req, reply) {
         var tripModel = req.payload;
+        console.log(tripModel);
         console.log('RECIEVE SAVE REQUEST');
         if (tripModel) {
             console.log('INVOKE SAVING');

@@ -17,29 +17,33 @@ var TripInstanceSchema = new _mongoose2.default.Schema({
     owner_id: String,
     name: String,
     description: String,
-    gDirection: [{
-        distance: {
-            text: String,
-            value: Number
-        },
-        duration: {
-            text: String,
-            value: Number
-        },
-        endLocation: {
-            lat: Number,
-            lng: Number
-        },
-        startLocation: {
-            lat: Number,
-            lng: Number
-        },
-        html_instructions: String,
-        travel_mode: String,
-        maneuver: String,
-        polyline: {
-            points: String
-        }
+    // gDirection: [{
+    //     distance: {
+    //         text: String,
+    //         value: Number
+    //     },
+    //     duration: {
+    //         text: String,
+    //         value: Number
+    //     },
+    //     endLocation: {
+    //         lat: Number,
+    //         lng: Number
+    //     },
+    //     startLocation: {
+    //         lat: Number,
+    //         lng: Number
+    //     },
+    //     html_instructions: String,
+    //     travel_mode: String,
+    //     maneuver: String,
+    //     polyline: {
+    //         points: String
+    //     }
+    // }]
+    trip_points: [{
+        latitude: Number,
+        longitude: Number
     }]
 }, { collection: 'TripInstance' });
 

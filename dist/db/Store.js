@@ -66,6 +66,17 @@ var Store = exports.Store = function () {
                 });
             }
         }
+    }, {
+        key: "findInstances",
+        value: function findInstances(_model, findCriteria, fn) {
+            var _this3 = this;
+
+            if (findCriteria && fn) {
+                return _model.find(findCriteria).exec(function (err, response) {
+                    return _this3.responseWrapper(err, response, fn);
+                });
+            }
+        }
     }]);
 
     return Store;

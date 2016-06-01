@@ -41,16 +41,9 @@ var TripManager = exports.TripManager = function () {
     }, {
         key: 'saveTrip',
         value: function saveTrip(tripData, fn) {
-            var _this = this;
-
             if (tripData && fn) {
-                this.Store.findInstance(_TripInstance.TripModel, { event_id: tripData.event_id }, function (findResponse) {
-                    var tripToSave = _this.buildTripInstanceBeforeSave(tripData);
-                    if (findResponse.state && findResponse.r != null) {
-                        tripToSave["_id"] = findResponse.r._id;
-                    }
-                    return _this.Store.saveInstance(tripToSave, fn);
-                });
+                var tripToSave = this.buildTripInstanceBeforeSave(tripData);
+                return this.Store.saveInstance(tripToSave, fn);
             }
         }
     }, {
@@ -58,6 +51,17 @@ var TripManager = exports.TripManager = function () {
         value: function getTrip(getCriteria, fn) {
             if (getCriteria && fn) {
                 return this.Store.findInstance(_TripInstance.TripModel, getCriteria, fn);
+            }
+        }
+    }, {
+        key: 'changeCurrentTrip',
+        value: function changeCurrentTrip(tripData, fn) {
+            if (tripData && fn) {
+                _Store.Store.findInstance(_TripInstance.TripModel, { _id: tripData._id }, function (response) {
+                    if (response.state) {
+                        _Store.Store.saveInstance(tripData, fn);
+                    }
+                });
             }
         }
     }]);
