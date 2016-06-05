@@ -19,6 +19,7 @@
   "dependencies": {
     "hapi": "^13.4.1",
     "inert": "^4.0.0",
+    "lwip": "0.0.9",
     "mongoose": "^4.4.19",
     "mssql": "^3.3.0",
     "multiparty": "^4.1.2",
